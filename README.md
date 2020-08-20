@@ -18,7 +18,11 @@ from brieftgbot import Bot
 token = ''
 myBot = Bot(token)
 #启动机器人
-myBot.launch()
+if __name__ == '__main__':
+    try:
+        myBot.launch()
+    except KeyboardInterrupt:
+        exit()
 ```
 
 之后你与机器人对话就可以看到控制台打印的消息了
@@ -39,7 +43,12 @@ def handler():
     if message['message']['texat'] == 'Hi':
         myBot.sendMessage(chat_id,'Hi from bot.')
 #启动机器人，并将你的逻辑函数传递进去
-myBot.launch(handler)
+
+if __name__ == '__main__':
+    try:
+        myBot.launch(handle)
+    except KeyboardInterrupt:
+        exit()
 ```
 
 1. 通过**myBot.Msg**即可获得机器人所收到的信息，并以json格式返回，这也是您编写您的逻辑的基础需求
